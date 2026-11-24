@@ -1,36 +1,44 @@
 /* 
   frontend/style.css
-  Industrial / Clinical Medical SOC Dashboard
-  Light Theme (Warm Cream / Off-White, Architectural Slate)
-  Strict Sharp-Edge Aesthetic (0px border-radius)
+  High-Impact Clinical SOC Dashboard
+  Theme: Warm Architectural Cream & Bone White with Obsidian Command Bar
+  Strict Sharp-Edge Aesthetic (0px border-radius everywhere)
 */
 
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
 :root {
-  --bg-main: #f5f3ec;
+  --bg-page: #f4f1ea;
   --bg-card: #ffffff;
-  --bg-card-subtle: #fbfaf7;
-  --border-main: #dcd6cd;
-  --border-dark: #1e293b;
+  --bg-surface: #faf8f5;
+  
+  --border-subtle: #ded8ce;
+  --border-strong: #0f172a;
+  --shadow-sharp: 4px 4px 0px #d5cfc3;
+  --shadow-sharp-sm: 2px 2px 0px #d5cfc3;
+
+  --header-bg: #0b1120;
+  --header-text: #f8fafc;
+  --header-muted: #94a3b8;
+  --header-accent: #38bdf8;
+
   --text-main: #0f172a;
   --text-muted: #64748b;
-  --text-dim: #94a3b8;
-  
-  --accent-blue: #1d4ed8;
-  --accent-cyan: #0284c7;
-  
+  --text-light: #94a3b8;
+
   --status-safe-bg: #ecfdf5;
   --status-safe-border: #059669;
   --status-safe-text: #065f46;
-  
+
   --status-danger-bg: #fef2f2;
   --status-danger-border: #dc2626;
   --status-danger-text: #991b1b;
-  
+
   --status-warn-bg: #fffbeb;
   --status-warn-border: #d97706;
   --status-warn-text: #92400e;
 
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'Courier New', Courier, monospace;
 }
 
@@ -42,7 +50,7 @@
 }
 
 body {
-  background-color: var(--bg-main);
+  background-color: var(--bg-page);
   color: var(--text-main);
   font-family: var(--font-sans);
   line-height: 1.5;
@@ -51,57 +59,113 @@ body {
 }
 
 /* -------------------------------------------------------------
-   Header
+   COMMAND HEADER (High-Contrast Obsidian & Cyan)
+   Instantly distinguishable and authoritative
 ------------------------------------------------------------- */
 header {
-  background: var(--bg-card);
-  border: 1px solid var(--border-main);
-  border-left: 6px solid var(--border-dark);
-  padding: 18px 24px;
+  background: var(--header-bg);
+  color: var(--header-text);
+  border: 2px solid var(--border-strong);
+  box-shadow: var(--shadow-sharp);
+  padding: 22px 28px;
   margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  gap: 20px;
+  position: relative;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
   gap: 16px;
+}
+
+.brand-icon-box {
+  width: 44px;
+  height: 44px;
+  background: var(--header-accent);
+  color: var(--header-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 900;
+  border: 1px solid #ffffff;
 }
 
 .brand-title {
   font-family: var(--font-mono);
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 800;
   letter-spacing: -0.5px;
-  color: var(--text-main);
-  text-transform: uppercase;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-badge {
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--header-accent);
+  border: 1px solid var(--header-accent);
+  padding: 2px 8px;
+  letter-spacing: 1px;
 }
 
 .brand-subtitle {
-  font-size: 13px;
-  color: var(--text-muted);
   font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--header-muted);
+  margin-top: 2px;
+  letter-spacing: 0.2px;
 }
 
 .header-badges {
   display: flex;
   gap: 12px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .badge {
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
-  padding: 6px 12px;
+  padding: 8px 14px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border: 1px solid var(--border-main);
-  background: var(--bg-card-subtle);
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #e2e8f0;
 }
 
 .badge-green {
-  background: var(--status-safe-bg);
-  color: var(--status-safe-text);
-  border-color: var(--status-safe-border);
+  background: #064e3b;
+  color: #6ee7b7;
+  border-color: #059669;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  display: inline-block;
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
 /* -------------------------------------------------------------
@@ -109,24 +173,28 @@ header {
 ------------------------------------------------------------- */
 .control-deck {
   background: var(--bg-card);
-  border: 1px solid var(--border-main);
-  padding: 16px 20px;
+  border: 1px solid var(--border-subtle);
+  border-left: 5px solid var(--border-strong);
+  box-shadow: var(--shadow-sharp-sm);
+  padding: 18px 24px;
   margin-bottom: 24px;
 }
 
 .deck-title {
   font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 800;
   color: var(--text-muted);
   text-transform: uppercase;
-  margin-bottom: 12px;
-  letter-spacing: 1px;
+  margin-bottom: 14px;
+  letter-spacing: 1.2px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .button-group {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
@@ -134,67 +202,87 @@ button {
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 700;
-  padding: 10px 18px;
+  padding: 12px 20px;
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border: 1px solid var(--border-dark);
+  border: 1.5px solid var(--border-strong);
   background: var(--bg-card);
   color: var(--text-main);
-  transition: all 0.15s ease;
+  box-shadow: 2px 2px 0px var(--border-strong);
+  transition: all 0.1s ease;
 }
 
 button:hover {
-  background: var(--border-dark);
+  background: var(--border-strong);
   color: #ffffff;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #000000;
+}
+
+button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px #000000;
 }
 
 button.active {
-  background: var(--border-dark);
+  background: var(--border-strong);
   color: #ffffff;
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 button.btn-danger {
   border-color: var(--status-danger-border);
   color: var(--status-danger-text);
   background: var(--status-danger-bg);
+  box-shadow: 2px 2px 0px var(--status-danger-border);
 }
 
 button.btn-danger:hover, button.btn-danger.active {
   background: var(--status-danger-border);
   color: #ffffff;
+  box-shadow: 3px 3px 0px #7f1d1d;
 }
 
 button.btn-warn {
   border-color: var(--status-warn-border);
   color: var(--status-warn-text);
   background: var(--status-warn-bg);
+  box-shadow: 2px 2px 0px var(--status-warn-border);
 }
 
 button.btn-warn:hover, button.btn-warn.active {
   background: var(--status-warn-border);
   color: #ffffff;
+  box-shadow: 3px 3px 0px #78350f;
 }
 
 /* -------------------------------------------------------------
-   Twin Status Hero Banner
+   Digital Twin Status Hero Banner
 ------------------------------------------------------------- */
 .twin-banner {
   border: 2px solid var(--status-safe-border);
   background: var(--status-safe-bg);
-  padding: 20px 24px;
+  box-shadow: var(--shadow-sharp-sm);
+  padding: 22px 28px;
   margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
-  transition: all 0.2s ease;
+  gap: 20px;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .twin-banner.breach {
   border-color: var(--status-danger-border);
   background: var(--status-danger-bg);
+  animation: breach-pulse 2s infinite alternate;
+}
+
+@keyframes breach-pulse {
+  0% { border-color: var(--status-danger-border); }
+  100% { border-color: #000000; }
 }
 
 .twin-status-text {
@@ -205,7 +293,7 @@ button.btn-warn:hover, button.btn-warn.active {
   color: var(--status-safe-text);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .twin-banner.breach .twin-status-text {
@@ -214,7 +302,7 @@ button.btn-warn:hover, button.btn-warn.active {
 
 .twin-metrics {
   display: flex;
-  gap: 24px;
+  gap: 32px;
   font-family: var(--font-mono);
 }
 
@@ -224,19 +312,22 @@ button.btn-warn:hover, button.btn-warn.active {
 }
 
 .metric-label {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-muted);
   text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .metric-value {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 800;
   color: var(--text-main);
+  letter-spacing: -0.5px;
 }
 
 /* -------------------------------------------------------------
-   Telemetry Grid
+   Telemetry Grid (Clean Architectural Cards)
 ------------------------------------------------------------- */
 .telemetry-grid {
   display: grid;
@@ -247,40 +338,58 @@ button.btn-warn:hover, button.btn-warn.active {
 
 .telemetry-card {
   background: var(--bg-card);
-  border: 1px solid var(--border-main);
-  padding: 14px 16px;
-  border-top: 3px solid var(--border-dark);
+  border: 1px solid var(--border-subtle);
+  border-top: 3px solid var(--border-strong);
+  box-shadow: var(--shadow-sharp-sm);
+  padding: 16px;
+  transition: all 0.15s ease;
+}
+
+.telemetry-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sharp);
 }
 
 .telemetry-card.danger {
   border-top-color: var(--status-danger-border);
-  background: #fffafa;
+  border-left: 2px solid var(--status-danger-border);
+  background: #fff8f8;
+}
+
+.card-index {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--text-light);
+  letter-spacing: 1px;
 }
 
 .card-title {
   font-family: var(--font-mono);
   font-size: 11px;
+  font-weight: 700;
   color: var(--text-muted);
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .card-value {
   font-family: var(--font-mono);
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
   color: var(--text-main);
+  letter-spacing: -0.5px;
 }
 
 .card-unit {
   font-size: 11px;
   color: var(--text-muted);
-  font-weight: 400;
+  font-weight: 500;
   margin-left: 4px;
 }
 
 /* -------------------------------------------------------------
-   Bottom Split Panels (XAI + Visualizer)
+   Bottom Split Panels (XAI & Architecture Inspector)
 ------------------------------------------------------------- */
 .split-deck {
   display: grid;
@@ -296,21 +405,23 @@ button.btn-warn:hover, button.btn-warn.active {
 
 .panel {
   background: var(--bg-card);
-  border: 1px solid var(--border-main);
-  padding: 20px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sharp-sm);
+  padding: 22px;
 }
 
 .panel-header {
   font-family: var(--font-mono);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   color: var(--text-main);
-  border-bottom: 1px solid var(--border-main);
+  border-bottom: 2px solid var(--border-strong);
   padding-bottom: 12px;
   margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 /* Root Cause Bars */
@@ -323,20 +434,21 @@ button.btn-warn:hover, button.btn-warn.active {
   justify-content: space-between;
   font-family: var(--font-mono);
   font-size: 11px;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 
 .bar-container {
   height: 10px;
-  background: #e2ddd5;
+  background: #e5e0d7;
   width: 100%;
+  border: 1px solid var(--border-subtle);
 }
 
 .bar-fill {
   height: 100%;
-  background: var(--accent-blue);
+  background: #2563eb;
   width: 0%;
-  transition: width 0.3s ease;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .bar-fill.danger {
@@ -347,17 +459,18 @@ button.btn-warn:hover, button.btn-warn.active {
 .tab-group {
   display: flex;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .tab-btn {
   font-size: 11px;
-  padding: 6px 12px;
+  padding: 8px 14px;
 }
 
 .tab-image {
   width: 100%;
-  border: 1px solid var(--border-main);
+  border: 1px solid var(--border-subtle);
   background: #ffffff;
   display: block;
+  box-shadow: var(--shadow-sharp-sm);
 }

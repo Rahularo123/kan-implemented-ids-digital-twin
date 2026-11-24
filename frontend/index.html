@@ -3,32 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AURA-IoMT :: KAN Digital Twin SOC</title>
+  <title>AURA-IoMT // KAN Digital Twin SOC</title>
   <link rel="stylesheet" href="/frontend/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- HIGH-CONTRAST COMMAND HEADER -->
   <header>
-    <div>
-      <div class="brand-title">AURA-IoMT // KAN Digital Twin SOC</div>
-      <div class="brand-subtitle">Intrinsically Explainable Kolmogorov-Arnold Network Cyber-Physical IDS</div>
+    <div class="brand-wrapper">
+      <div class="brand-icon-box">⊕</div>
+      <div>
+        <div class="brand-title">
+          <span>AURA-IoMT</span>
+          <span class="brand-badge">SOC :: V1.0</span>
+        </div>
+        <div class="brand-subtitle">
+          Intrinsically Explainable Kolmogorov-Arnold Network (KAN) Cyber-Physical IDS & Digital Twin
+        </div>
+      </div>
     </div>
     <div class="header-badges">
       <div class="badge" id="modelArchBadge">ARCH: KAN-AE (10→6→3→6→10)</div>
       <div class="badge" id="thresholdBadge">THRESHOLD: 1.1492</div>
-      <div class="badge badge-green" id="systemStatusBadge">● SYSTEM ONLINE</div>
+      <div class="badge badge-green" id="systemStatusBadge">
+        <span class="pulse-dot"></span>
+        <span>SYSTEM OPERATIONAL</span>
+      </div>
     </div>
   </header>
 
   <!-- ATTACK SIMULATION CONTROL DECK -->
   <div class="control-deck">
-    <div class="deck-title">Interactive Telemetry Stream Controller & Cyber-Physical Attack Injector</div>
+    <div class="deck-title">
+      <span>Interactive Cyber-Physical Threat Simulation Deck</span>
+      <span style="color: var(--text-light); font-weight: 500;">DATASET: WUSTL-EHMS-2020 CALIBRATED</span>
+    </div>
     <div class="button-group">
-      <button id="btnNormal" class="active" onclick="setScenario('Normal')">▶ Normal Telemetry Stream</button>
+      <button id="btnNormal" class="active" onclick="setScenario('Normal')">▶ Normal Telemetry</button>
       <button id="btnDos" class="btn-warn" onclick="setScenario('DoS_Flooding')">⚡ Inject DoS Flood Attack</button>
       <button id="btnInjection" class="btn-warn" onclick="setScenario('Data_Injection')">💉 Inject Biometric Tampering (FDIA)</button>
       <button id="btnZeroDay" class="btn-danger" onclick="setScenario('ZeroDay_Replay')">🚨 Inject Novel Zero-Day Exploit</button>
@@ -40,10 +53,10 @@
   <div class="twin-banner" id="twinBanner">
     <div>
       <div class="twin-status-text" id="twinStatusText">
-        <span>✓</span> DIGITAL TWIN SYNCHRONIZED
+        <span>✓</span> DIGITAL TWIN SYNCHRONIZED [NOMINAL]
       </div>
       <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-top: 4px;">
-        Physical Telemetry matches the KAN Behavioral Baseline
+        Physical Telemetry strictly complies with the KAN Behavioral Baseline
       </div>
     </div>
     <div class="twin-metrics">
@@ -65,42 +78,52 @@
   <!-- TELEMETRY SENSOR GRID -->
   <div class="telemetry-grid">
     <div class="telemetry-card" id="card_hr">
+      <div class="card-index">01 / BIOMETRIC</div>
       <div class="card-title">Heart Rate</div>
       <div class="card-value"><span id="val_hr">--</span><span class="card-unit">BPM</span></div>
     </div>
     <div class="telemetry-card" id="card_resp">
+      <div class="card-index">02 / BIOMETRIC</div>
       <div class="card-title">Respiration</div>
       <div class="card-value"><span id="val_resp">--</span><span class="card-unit">br/min</span></div>
     </div>
     <div class="telemetry-card" id="card_spo2">
+      <div class="card-index">03 / BIOMETRIC</div>
       <div class="card-title">Blood Oxygen (SpO2)</div>
       <div class="card-value"><span id="val_spo2">--</span><span class="card-unit">%</span></div>
     </div>
     <div class="telemetry-card" id="card_bpsys">
+      <div class="card-index">04 / BIOMETRIC</div>
       <div class="card-title">Systolic BP</div>
       <div class="card-value"><span id="val_bpsys">--</span><span class="card-unit">mmHg</span></div>
     </div>
     <div class="telemetry-card" id="card_bpdia">
+      <div class="card-index">05 / BIOMETRIC</div>
       <div class="card-title">Diastolic BP</div>
       <div class="card-value"><span id="val_bpdia">--</span><span class="card-unit">mmHg</span></div>
     </div>
     <div class="telemetry-card" id="card_temp">
+      <div class="card-index">06 / BIOMETRIC</div>
       <div class="card-title">Temperature</div>
       <div class="card-value"><span id="val_temp">--</span><span class="card-unit">°F</span></div>
     </div>
     <div class="telemetry-card" id="card_prate">
+      <div class="card-index">07 / NETWORK</div>
       <div class="card-title">Packet Rate</div>
       <div class="card-value"><span id="val_prate">--</span><span class="card-unit">pkts/s</span></div>
     </div>
     <div class="telemetry-card" id="card_psize">
+      <div class="card-index">08 / NETWORK</div>
       <div class="card-title">Mean Packet Size</div>
       <div class="card-value"><span id="val_psize">--</span><span class="card-unit">bytes</span></div>
     </div>
     <div class="telemetry-card" id="card_jitter">
+      <div class="card-index">09 / NETWORK</div>
       <div class="card-title">Network Jitter</div>
       <div class="card-value"><span id="val_jitter">--</span><span class="card-unit">ms</span></div>
     </div>
     <div class="telemetry-card" id="card_latency">
+      <div class="card-index">10 / NETWORK</div>
       <div class="card-title">Roundtrip Latency</div>
       <div class="card-value"><span id="val_latency">--</span><span class="card-unit">ms</span></div>
     </div>
@@ -113,13 +136,12 @@
     <div class="panel">
       <div class="panel-header">
         <span>Root-Cause Feature Attribution (Discrepancy Residuals)</span>
-        <span id="xaiStatusPill" style="color: var(--status-safe-text);">BASELINE NOMINAL</span>
+        <span id="xaiStatusPill" style="color: var(--status-safe-text); font-size: 11px;">BASELINE NOMINAL</span>
       </div>
       <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">
         Measures individual deviation (x - x̂)² between incoming telemetry and the KAN Digital Twin.
       </div>
       <div id="causeList">
-        <!-- Injected via JavaScript -->
         <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">
           Streaming live telemetry...
         </div>
@@ -130,7 +152,7 @@
     <div class="panel">
       <div class="panel-header">
         <span>Intrinsic KAN Architecture & Research Verification</span>
-        <span style="color: var(--accent-blue);">MIT 2024 BENCHMARK</span>
+        <span style="color: #2563eb; font-size: 11px;">MIT 2024 BENCHMARK</span>
       </div>
       <div class="tab-group">
         <button class="tab-btn active" id="tabSplines" onclick="switchVisualTab('splines')">Learned B-Spline Curves</button>
