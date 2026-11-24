@@ -21,7 +21,7 @@ class KANLinear(nn.Module):
         h = 2.0 / grid_size
         grid = torch.linspace(-1.0 - h * spline_order, 1.0 + h * spline_order, grid_size + 2 * spline_order + 1)
         # Shape: (in_features, num_grid_points)
-        self.register_buffer("grid", grid.unsqueeze(0).expand(in_features, -1))
+        self.register_buffer("grid", grid.unsqueeze(0).expand(in_features, -1).clone())
 
         # 2. Backbone weights (linear transformation with SiLU activation)
         self.base_weight = nn.Parameter(torch.Tensor(out_features, in_features))
