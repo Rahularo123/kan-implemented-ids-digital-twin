@@ -62,6 +62,8 @@ The benchmark generator (`src/dataset_generator.py`) synthesizes **25,000** cybe
 
 ## Experimental Results
 
+> **Note on Experimental Scope:** This project is built primarily as a proof-of-concept to demonstrate novel architectural ideas—combining cyber-physical behavioral digital twins, semi-supervised KAN spline modeling, and intrinsic root-cause explainability. Because the evaluation runs at a modest scale (`25,000` calibrated samples across `3` distinct attack profiles), the near-perfect scores below (`100%` recall, `1.0000` ROC-AUC) reflect a controlled benchmark setting rather than production hospital complexity. Real-world deployments involve noisier clinical hardware, overlapping patient edge cases, and subtler adversarial behavior, so these results should be viewed as an illustrative demonstration of the pipeline rather than real-world performance guarantees.
+
 Evaluated on **11,000 unseen test samples** (`3,500` Normal + `7,500` across all 3 attack classes):
 
 | Metric | Score |
